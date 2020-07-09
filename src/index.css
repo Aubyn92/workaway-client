@@ -36,9 +36,15 @@ nav a {
 }
 
 .container {
+  position: relative;
   max-width: 700px;
   margin: 10px auto;
 }
+/* 
+.formy {
+  display: flex;
+  flex-direction: column;
+} */
 
 form {
   display: flex;
@@ -73,20 +79,132 @@ form textarea {
   cursor: pointer;
 }
 
+/* HOME.JSX HERO AND CONTENT */
+
 .host {
+  position: relative;
+  height: 100vh;
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content: center;
+}
+
+.host::before {
+  content:'';
+  background-image: url('./assets/images/travel2-desktop.jpg');
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.3;
+}
+
+.host-content {
+  position: relative;
+  font-size: 25px;
+  line-height: 1.5;
+  text-align: center; 
+  flex-direction: column;
+  padding-bottom: 425px;
+}
+
+.host-show-btn {
+  background-color:#f4f5aa;
+  border-radius: 5px;
+  /* display: block; */
+  /* : center; */
+  /* background-color: #c08037; */
+  /* color: white; */
+  border: 1px solid #d5dfe2;
+  /* border-radius: 20px; */
+  /* margin-left: 580px;
+  margin-top: 100px; */
+  padding: 5px 8px 5px 8px;
+  /* width: 200px; */
+  font-size: 13px;
+  /* margin: 20px 0px; */
+}
+
+.edit-btn {
+  background-color:#f4f5aa;
+  border-radius: 5px;
+  /* display: block; */
+  /* : center; */
+  /* background-color: #c08037; */
+  /* color: white; */
+  border: 1px solid #d5dfe2;
+  /* border-radius: 20px; */
+  /* margin-left: 580px;
+  margin-top: 100px; */
+  padding: 5px 8px 5px 8px;
+  /* width: 200px; */
+  font-size: 15px;
+  /* margin: 20px 0px; */
+}
+
+.most {
   padding: 10px;
 }
 
-
-.Home {
+.hero-finally {
+  background-image: url('./assets/images/travel2-desktop.jpg');
   height: 100vh;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top center;
 }
 
-/* HOME.JSX HERO AND CONTENT */
+.home-text-h1 {
+  font-size: 55px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top:30px;
+  align-items: center;
+}
 
+.home-text-p {
+  font-size: 35px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top:20px;
+  align-items: center;
+}
+
+.hosts ul {
+  list-style-type: none;
+  /* padding: 0; */
+  /* margin: 0; */
+  /* text-align: center; */
+  /* width: 10em; */
+}
+
+.hosts li {
+padding: 10px 0 10px 0;
+/* background-repeat: no-repeat; */
+/* background-position: 100% .4em; */
+/* padding-right: .6em; */
+margin: 0.5em 0;
+}
+
+/* .hosts h3, p {
+  padding: 10px;
+  
+} */
+
+
+/* .Home {
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+} */
+
+/* 
 .Home-content {
   height: 100%;
   display: flex;
@@ -95,20 +213,29 @@ form textarea {
   align-items: center;
   position: relative;
   top: -150px;
-  right: 25px;
+  right: 25px; */
   /* padding: 40px; */
-}
-
-@media (min-width: 650px ) {
-  .Home {
+  /* } */
+  
+  @media (min-width: 650px ) {
+    .Home {
       background-position: center center;
-  }
-
-  .Home-content {
+    }
+    
+    /* .Home-content {
       align-items: flex-end;
       justify-content: center;
-      font-size: 40px;
+      font-size: 40px; */
       /* color: #c20c11; */
-      color: #3a3a3a;
+      /* color: #3a3a3a;
+    } */
+
+    /* padding: 10px;
+    text-align:center;
+    font-size: 25px; */
+    /* background-image: url('./assets/images/travel2-desktop.jpg'); */
+    /* background-size: cover; */
+    /* background-repeat: no-repeat; */
+    /* background-position: top center; */
+    /* opacity: 0.5; */
   }
-}
