@@ -8,13 +8,8 @@ class Host extends React.Component {
   async componentDidMount() {
     // console.log(this.props)
     // console.log(this.props.location.state.location)
-<<<<<<< HEAD
-    const {id} = this.state
-    const anotherResponse = await fetch(`http://localhost:3000/hosts/${id}`)
-=======
     const { id } = this.state;
     const anotherResponse = await fetch(`http://localhost:3000/host/${id}`);
->>>>>>> c51e6323ecf455b8e63f9008c322b64d9abcd6ff
     const host = await anotherResponse.json();
     const response = await fetch(
       `https://restcountries.eu/rest/v2/name/${this.props.location.state.location}`
@@ -54,11 +49,7 @@ class Host extends React.Component {
           <p>Location: {host.location}</p>
           <p>Work Category: {host.work_category}</p>
           <p>Description:{host.work_description}</p>
-<<<<<<< HEAD
-          <h1>Time required per week:{host.time}</h1>
-=======
           <p>Time required per week:{host.time}</p>
->>>>>>> c51e6323ecf455b8e63f9008c322b64d9abcd6ff
           <p>Accomodation:{`${(host.accommodation)}`}</p>
         {countries &&
         
@@ -79,16 +70,3 @@ class Host extends React.Component {
 }
 
 export default Host;
-<<<<<<< HEAD
-
-
-
-
-  // async componentDidMount(){
-  //   const response = await fetch("https://restcountries.eu/rest/v2/all");
-  //   const data = await response.json();
-  //   const response2 = await fetch("https://localhost:3000")
-  //   const hosts = await response2.json();
-  //   this.setState({ hostsData: hosts});
-=======
->>>>>>> c51e6323ecf455b8e63f9008c322b64d9abcd6ff
