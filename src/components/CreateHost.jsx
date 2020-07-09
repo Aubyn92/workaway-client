@@ -26,6 +26,7 @@ class CreateHost extends React.Component {
 
   render() {
     return (
+      <div className="host">
       <div className="container">
         <form onSubmit={this.onFormSubmit}>
           <label htmlFor="name">Name</label>
@@ -41,8 +42,9 @@ class CreateHost extends React.Component {
           {/* <label htmlFor="accommodation">Accommodation</label>     
           <input type="checkbox" id="accommodation" name="accommodation" value='true' onChange={this.onCheckBoxChange}/> */}
           
-          <input type="submit" value="Submit" />
+          <input className="edit-btn" type="submit" value="Submit" />
         </form>
+      </div>
       </div>
     );
   }

@@ -7,7 +7,7 @@ class EditHost extends React.Component {
     work_category: "",
     work_description: "",
     time: "",
-    accommodation: true,
+    // accommodation: true,
     id: this.props.match.params.id
   };
   onInputChange = (event) => {
@@ -24,7 +24,7 @@ class EditHost extends React.Component {
       work_category,
       work_description,
       time,
-      accommodation,
+      // accommodation,
       id
     } = this.state
     await fetch(`http://localhost:3000/hosts/${id}`, {
@@ -38,7 +38,7 @@ class EditHost extends React.Component {
         work_category,
         work_description,
         time,
-        accommodation
+        // accommodation
       }),
     });
     this.props.history.push("/hosts");
@@ -53,7 +53,7 @@ class EditHost extends React.Component {
       work_category,
       work_description,
       time,
-      accommodation,
+      // accommodation,
       loading
     } = await response.json();
     this.setState({
@@ -62,7 +62,7 @@ class EditHost extends React.Component {
       work_category,
       work_description,
       time,
-      accommodation,
+      // accommodation,
       loading
     });
   }
@@ -74,11 +74,12 @@ class EditHost extends React.Component {
       work_category,
       work_description,
       time,
-      accommodation,
+      // accommodation,
       loading
     } = this.state;
     return (
       !loading && (
+        <div className="host">
         <div className="container">
           <h1>Edit a Listing</h1>
           <form onSubmit={this.onFormSubmit}>
@@ -107,14 +108,12 @@ class EditHost extends React.Component {
               value={work_category}
             />
             <label htmlFor="work_description">Work Description</label>
-            <input
-              type="text"
-              name="work_description"
-              id="work_description"
-              onChange={this.onInputChange}
-              value={work_description}
-            />
-            <label htmlFor="time">Time</label>
+            <textarea 
+            name="work_description" 
+            id="work_description" onChange={this.onInputChange}>
+            </textarea>
+
+            <label htmlFor="time">Hours per week</label>
             <input
               type="text"
               name="time"
@@ -122,16 +121,17 @@ class EditHost extends React.Component {
               onChange={this.onInputChange}
               value={time}
             />
-            <label htmlFor="accommodation">Accommodation</label>
+            {/* <label htmlFor="accommodation">Accommodation</label>
             <input
               type="text"
               name="accommodation"
               id="accommodation"
               onChange={this.onInputChange}
               value={accommodation}
-            />
-            <input type="submit" value="Submit" />
+            /> */}
+            <input className="edit-btn" type="submit" value="Submit" />
           </form>
+        </div>
         </div>
       )
     );

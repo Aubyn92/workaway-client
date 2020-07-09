@@ -44,18 +44,20 @@ class Host extends React.Component {
     // console.log(this.props);
     console.log(countries)
     return (
+      <div className="host">
       <>
-          <p>Name: {host.name}</p>
-          <p>Location: {host.location}</p>
-          <p>Work Category: {host.work_category}</p>
+      <div className="host-content">
+          <h3>Name: {host.name}</h3>
+          <h3>Location: {host.location}</h3>
+          <h3>Work Category: {host.work_category}</h3>
           <p>Description:{host.work_description}</p>
-          <p>Time required per week:{host.time}</p>
-          <p>Accomodation:{`${(host.accommodation)}`}</p>
+          <h3>Time required per week:{host.time}</h3>
+          {/* <p>Accomodation:{`${(host.accommodation)}`}</p> */}
         {countries &&
         
           countries.map((country, index) => {
           return (
-              <div key={index}>
+              <div key={index} className="most">
                 <p> Capital:{country.capital}</p>
                 <p> Currency:{country.currencies[0].name}</p>
                 <p> Language:{country.languages[0].name}</p>
@@ -63,7 +65,9 @@ class Host extends React.Component {
              )
           })
         }
+        </div>
       </>
+      </div>
     );
   }
 }

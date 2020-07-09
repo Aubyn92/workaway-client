@@ -31,7 +31,10 @@ const Home = () => {
 //     return windowWidth;
 // };
 return(
-    <h1> hello world </h1>
+    <div className="hero-finally">
+       <h1 className="home-text-h1">Workaway</h1>
+       <p className="home-text-p">Travel, Volunteer, Connect</p>
+    </div>
 )
 
 
