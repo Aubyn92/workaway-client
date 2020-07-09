@@ -12,9 +12,9 @@ class App extends React.Component {
   async componentDidMount(){
     // const response = await fetch("https://restcountries.eu/rest/v2/all");
     // const data = await response.json();
-    const response2 = await fetch("https://localhost:3000")
-    const hosts = await response2.json();
-    this.setState({ hostsData: hosts});
+  //   const response2 = await fetch("http://localhost:3000")
+  //   const hosts = await response2.json();
+  //   this.setState({ hostsData: hosts});
   }
 
   render() {
@@ -25,7 +25,7 @@ class App extends React.Component {
           <Route exact path="/hosts" component={Hosts} />
           <Route exact path="/hosts/create" component={CreateHost} />
           <Route exact path="/hosts/:id/edit" component={EditHost} />
-          <Route exact path="/countries/:id" component={Host} />
+          <Route exact path="/hosts/:id" component={Host} />
           <Route exact path="/" component={Home} />
           <Route component={NoMatch} />
         </Switch>

@@ -1,6 +1,14 @@
 import React from "react";
 
 class Host extends React.Component {
+  
+  async componentDidMount() {
+    const {location} = this.props.location.state;
+    const response = await fetch(`https://restcountries.eu/rest/v2/name/${location}`);
+    const data = await response.json();
+    console.log(data);
+  }
+
   render() {
     const host = this.props.location.state;
     return (
@@ -9,7 +17,7 @@ class Host extends React.Component {
           <h3>Location: {host.location}</h3>
           <h3>Work Category: {host.work_category}</h3>
           <p>Description:{host.work_description}</p>
-          <h3>Time required per week:{host.time}</h3>
+          <h1>Time required per week:{host.time}</h1>
           <p>Accomodation:{`${(host.accommodation)}`}</p>
      
           {/* <p>{moment(host.created_at).startOf('minute').fromNow()}</p> */}
@@ -27,11 +35,6 @@ export default Host;
 
 
 
-  // async componentDidMount() {
-  //   this.getHosts();
-  //     const response = await fetch("https://restcountries.eu/rest/v2/all");
-  //   const data = await response.json();
-  // }
 
   // async componentDidMount(){
   //   const response = await fetch("https://restcountries.eu/rest/v2/all");
