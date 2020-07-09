@@ -1,18 +1,14 @@
-import React from 'react';
-import { Route, Switch } from 'react-router-dom';
-import Home from './components/Home';
-import Hosts from './components/Hosts';
-import NoMatch from './components//NoMatch';
-import CreateHost from './components/CreateHost';
-import EditHost from './components/EditHost';
-import Navbar from "./components/Navbar";
+import React from "react";
+import { Route, Switch } from "react-router-dom";
+import Home from "./Home";
+import Hosts from "./Hosts";
+import NoMatch from "./NoMatch";
+import Navbar from "../shared/Navbar";
+import CreateHost from "./CreateHost";
+import EditHost from "./EditHost";
+import Host from './Host';
 
 class App extends React.Component {
-  state = {
-    countryData: [],
-    hostsData: []
-  }
-  
   async componentDidMount(){
     // const response = await fetch("https://restcountries.eu/rest/v2/all");
     // const data = await response.json();
@@ -22,26 +18,19 @@ class App extends React.Component {
   }
 
   render() {
-    // const countries = this.state?.countryData;
-    // console.log(countries);
-    console.log(this.state?.hostsData);
     return (
       <>
-        <Navbar /> 
-         <Switch>
+        <Navbar />
+        <Switch>
           <Route exact path="/hosts" component={Hosts} />
           <Route exact path="/hosts/create" component={CreateHost} />
           <Route exact path="/hosts/:id/edit" component={EditHost} />
+          <Route exact path="/countries/:id" component={Host} />
           <Route exact path="/" component={Home} />
           <Route component={NoMatch} />
         </Switch>
-        {this.state.hostsData?.map((host) => {
-          return(<Hosts hostData={host}/>)
-        })}
-      
-
       </>
-    )
+    );
   }
 }
 

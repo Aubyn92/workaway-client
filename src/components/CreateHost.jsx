@@ -7,9 +7,14 @@ class CreateHost extends React.Component {
     });
   };
 
+  onCheckBoxChange = (event) => {
+    console.log(event.target.value);
+  }
+
   onFormSubmit = async (event) => {
     event.preventDefault();
-    await fetch("http://localhost:3000/create", {
+    console.log(this.state);
+    await fetch("http://localhost:3000/hosts", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -22,23 +27,20 @@ class CreateHost extends React.Component {
   render() {
     return (
       <div className="container">
-        <form>
+        <form onSubmit={this.onFormSubmit}>
           <label htmlFor="name">Name</label>
-          <input type="text" name="name" id="name" />
+          <input type="text" name="name" id="name" onChange={this.onInputChange}/>
           <label htmlFor="location">Location</label>
-          <input type="text" name="location" id="location" />
+          <input type="text" name="location" id="location" onChange={this.onInputChange}/>
           <label htmlFor="work_category">Category</label>
-          <input type="text" name="work_category" id="work_category" />
+          <input type="text" name="work_category" id="work_category" onChange={this.onInputChange}/>
           <label htmlFor="work_description">Description</label>
-          <textarea name="work_description" id="work_description"></textarea>
+          <textarea name="work_description" id="work_description" onChange={this.onInputChange}></textarea>
           <label htmlFor="time">Hours per week</label>
-          <input type="text" name="time" id="time" />
+          <input type="text" name="time" id="time" onChange={this.onInputChange}/>
           <label htmlFor="accommodation">Accommodation</label>     
-          <div><label for="true">True</label><input type="checkbox" id="accommodation" name="accommodation"
-           checked /></div>
-          <div><label for="false">False</label>
-          <input type="checkbox" id="accommodation" name="accommodation" /> </div>
-
+          <input type="checkbox" id="accommodation" name="accommodation" value='true' onChange={this.onCheckBoxChange}/>
+          
           <input type="submit" value="Submit" />
         </form>
       </div>

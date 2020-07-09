@@ -1,20 +1,29 @@
-body {
+*{
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+  height:100%;
 }
 
 nav {
   padding: 20px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
+  background-color: #535683;
 }
 
 nav a {
   text-decoration: none;
-  color: crimson;
+  color: white;
+  font-size: 18px;
   margin: 0px 10px;
 }
 
@@ -56,6 +65,42 @@ form textarea {
   cursor: pointer;
 }
 
-.bookmark {
+.host {
   padding: 10px;
+}
+
+
+.Home {
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+}
+
+/* HOME.JSX HERO AND CONTENT */
+
+.Home-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  top: -150px;
+  right: 25px;
+  /* padding: 40px; */
+}
+
+@media (min-width: 650px ) {
+  .Home {
+      background-position: center center;
+  }
+
+  .Home-content {
+      align-items: flex-end;
+      justify-content: center;
+      font-size: 40px;
+      /* color: #c20c11; */
+      color: #3a3a3a;
+  }
 }
