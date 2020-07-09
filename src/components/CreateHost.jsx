@@ -38,8 +38,8 @@ class CreateHost extends React.Component {
           <textarea name="work_description" id="work_description" onChange={this.onInputChange}></textarea>
           <label htmlFor="time">Hours per week</label>
           <input type="text" name="time" id="time" onChange={this.onInputChange}/>
-          <label htmlFor="accommodation">Accommodation</label>     
-          <input type="checkbox" id="accommodation" name="accommodation" value='true' onChange={this.onCheckBoxChange}/>
+          {/* <label htmlFor="accommodation">Accommodation</label>     
+          <input type="checkbox" id="accommodation" name="accommodation" value='true' onChange={this.onCheckBoxChange}/> */}
           
           <input type="submit" value="Submit" />
         </form>

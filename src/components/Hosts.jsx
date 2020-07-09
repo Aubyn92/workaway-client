@@ -68,7 +68,7 @@ class Hosts extends React.Component {
     // const countries = this.state?.countryData;
     return <div>{this.renderHosts()},
     {/* {this. getLocationData()} */}
-    
+
     </div>;
 
   }

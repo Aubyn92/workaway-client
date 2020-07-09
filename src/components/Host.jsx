@@ -59,7 +59,6 @@ class Host extends React.Component {
                 <p> Capital:{country.capital}</p>
                 <p> Currency:{country.currencies[0].name}</p>
                 <p> Language:{country.languages[0].name}</p>
-
               </div>
              )
           })
