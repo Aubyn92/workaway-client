@@ -9,7 +9,7 @@ class Host extends React.Component {
     // console.log(this.props)
     // console.log(this.props.location.state.location)
     const {id} = this.state
-    const anotherResponse = await fetch(`http://localhost:3000/host/${id}`)
+    const anotherResponse = await fetch(`http://localhost:3000/hosts/${id}`)
     const host = await anotherResponse.json();
     this.setState({host: host});
     console.log(this.state)
@@ -46,7 +46,7 @@ class Host extends React.Component {
   //   const data = await response.json();
   // }
   render() {
-    const host = this.props.location.state.location;
+    const host = this.props.location.state;
     // console.log(this.props);
     return (
         <div>
