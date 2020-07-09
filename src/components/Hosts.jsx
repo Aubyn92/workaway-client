@@ -11,7 +11,7 @@ class Hosts extends React.Component {
     console.log(hosts)
     this.setState({ hosts: hosts });
   };
-
+  
 
   deleteHost = async (id) => {
     await fetch(`http://localhost:3000/hosts/${id}`, {
@@ -19,6 +19,20 @@ class Hosts extends React.Component {
     });
     this.getHosts();
   };
+
+  componentDidMount = async () => {
+    await this.getHosts()
+  }
+
+  // getLocationData = async() =>{
+  //   const response = await fetch(`https://restcountries.eu/rest/v2/capital/${location}`);
+  //   const countries = await response.json();
+  //   this.setState({countries: countries})
+  //   const {id} = this.state
+  //   const anotherResponse = await fetch(`http://localhost:3000/host/${id}`)
+  //   const host = await anotherResponse.json();
+  //   this.setState({host: host});
+  // }
 
   renderHosts = () => {
     return this.state.hosts.map((host, index) => {
@@ -32,6 +46,12 @@ class Hosts extends React.Component {
           <p>Accomodation:{`${(host.accommodation)}`}</p>
      
           {/* <p>{moment(host.created_at).startOf('minute').fromNow()}</p> */}
+          <Link to={{
+            pathname: `/hosts/${host.id}`,
+            state: host,
+          }} >
+            <button> Show </button>
+          </Link>
           <div className="edit-delete-container">
             <Link to={{
               pathname: `/hosts/${host.id}`,
@@ -54,7 +74,10 @@ class Hosts extends React.Component {
 
   render() {
     // const countries = this.state?.countryData;
-    return <div>{this.renderHosts()}</div>;
+    return <div>{this.renderHosts()},
+    {/* {this. getLocationData()} */}
+    </div>;
+
   }
 }
 

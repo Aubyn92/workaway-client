@@ -9,13 +9,6 @@ import EditHost from "./EditHost";
 import Host from './Host';
 
 class App extends React.Component {
-  async componentDidMount(){
-    // const response = await fetch("https://restcountries.eu/rest/v2/all");
-    // const data = await response.json();
-  //   const response2 = await fetch("http://localhost:3000")
-  //   const hosts = await response2.json();
-  //   this.setState({ hostsData: hosts});
-  }
 
   render() {
     return (
