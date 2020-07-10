@@ -27,7 +27,7 @@ class EditHost extends React.Component {
       // accommodation,
       id
     } = this.state
-    await fetch(`${process.env.REACT_APP_BACKEND_URL}/host/${id}`, {
+    await fetch(`${process.env.REACT_APP_BACKEND_URL}/hosts/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -50,7 +50,7 @@ class EditHost extends React.Component {
 
   async componentDidMount() {
     const { id } = this.state;
-    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/host/${id}`);
+    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/hosts/${id}`);
     const {
       name,
       location,

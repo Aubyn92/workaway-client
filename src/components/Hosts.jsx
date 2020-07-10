@@ -16,6 +16,9 @@ class Hosts extends React.Component {
   deleteHost = async (id) => {
     await fetch(`http://localhost:3000/hosts/${id}`, {
       method: "DELETE",
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
     });
     this.getHosts();
   };
@@ -42,7 +45,7 @@ class Hosts extends React.Component {
           <li><h3>Name: {host.name}</h3></li>
           <li><h3>Location: {host.location}</h3></li>
           <li><h3>Work Category: {host.work_category}</h3></li>
-          <li><p>Description:{host.work_description}</p></li>
+          <li><h3>Description:</h3><p>{host.work_description}</p></li>
           <li><h3>Time required per week:{host.time}</h3></li>
           </ul>
           {/* <p>Accomodation:{`${(host.accommodation)}`}</p> */}
@@ -55,12 +58,6 @@ class Hosts extends React.Component {
             <button className="host-show-btn"> Show </button>
           </Link>
           <div className="edit-delete-container">
-            <Link to={{
-              pathname: `/hosts/${host.id}`,
-              state: host,
-             }} >
-              <button> Show </button>
-            </Link>
             <Link to={`/hosts/${host.id}/edit`}>Edit</Link>
             <span onClick={() => this.deleteHost(host.id)}>Delete</span>
           </div>

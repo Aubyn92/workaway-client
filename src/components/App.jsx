@@ -10,6 +10,8 @@ import Host from './Host';
 import ProtectedRoute from './ProtectedRoute';
 import Login from './Login';
 import SignUp from './SignUp';
+import Secrets from './Secrets';
+
 
 class App extends React.Component {
 
@@ -20,7 +22,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/hosts" component={Hosts} />
           <ProtectedRoute exact path="/hosts/create" component={CreateHost} />
-          {/* <Route exact path="/hosts/create" component={CreateHost} /> */}
+          <ProtectedRoute exact path="/secrets" component={Secrets} />
           <ProtectedRoute exact path="/hosts/:id/edit" component={EditHost} />
           <Route exact path="/hosts/:id" component={Host} />
           <Route exact path="/login" component={Login} />

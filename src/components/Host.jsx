@@ -9,7 +9,7 @@ class Host extends React.Component {
     // console.log(this.props)
     // console.log(this.props.location.state.location)
     const { id } = this.state;
-    const anotherResponse = await fetch(`${process.env.REACT_APP_BACKEND_URL}/host/${id}`, {
+    const anotherResponse = await fetch(`${process.env.REACT_APP_BACKEND_URL}/hosts/${id}`, {
       headers: {
       'Authorization': `Bearer ${localStorage.getItem('token')}`
       }
@@ -21,33 +21,6 @@ class Host extends React.Component {
     const countries = await response.json();
     this.setState({ countries: countries, host: host});
   }
-
-
-
-
-
-
-
-
-  // render() {
-  //   console.log("here");
-  //   console.log(this.state)
-  //   const countries = this.state?.countries;
-  //   return (
-  //     <>
-  //       {countries &&
-  //         countries.map((countries, index) => {
-  //           return (
-  //             <div key={index}>
-  //               <p>{countries.name}</p>
-  //               <p><img src ={countries.flag} alt ="flag"></img></p>
-  //               <hr />
-  //             </div>
-  //           );
-  //         })}
-  //     </>
-  //   );
-  // }
 
   render() {
     const host = this.props.location.state;
@@ -61,8 +34,8 @@ class Host extends React.Component {
           <h3>Name: {host.name}</h3>
           <h3>Location: {host.location}</h3>
           <h3>Work Category: {host.work_category}</h3>
-          <p>Description:{host.work_description}</p>
-          <h3>Time required per week:{host.time}</h3>
+          <h3>Description:</h3><p>{host.work_description}</p>
+          <h3>Time required per week(hours):{host.time}</h3>
           {/* <p>Accomodation:{`${(host.accommodation)}`}</p> */}
         {countries &&
         

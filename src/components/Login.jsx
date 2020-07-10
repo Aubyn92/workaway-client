@@ -41,6 +41,7 @@ class Login extends React.Component {
   render() {
     const { email, password, errMessage } = this.state;
     return (
+      <div className="host">
       <div className="container">
         <h1>Login</h1>
         {errMessage && <span>{errMessage}</span>}
@@ -63,6 +64,7 @@ class Login extends React.Component {
           />
           <input type="submit" value="Submit" />
         </form>
+      </div>
       </div>
     );
   }
