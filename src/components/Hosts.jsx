@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import moment from 'moment'
+import moment from 'moment'
 
 class Hosts extends React.Component {
   state = { hosts: [] };
@@ -37,20 +37,22 @@ class Hosts extends React.Component {
   renderHosts = () => {
     return this.state.hosts.map((host, index) => {
       return (
-        <div key={index} className="host">
-          <h3>Name: {host.name}</h3>
-          <h3>Location: {host.location}</h3>
-          <h3>Work Category: {host.work_category}</h3>
-          <p>Description:{host.work_description}</p>
-          <h3>Time required per week:{host.time}</h3>
-          <p>Accomodation:{`${(host.accommodation)}`}</p>
+        <div key={index} className="hosts">
+          <ul>
+          <li><h3>Name: {host.name}</h3></li>
+          <li><h3>Location: {host.location}</h3></li>
+          <li><h3>Work Category: {host.work_category}</h3></li>
+          <li><p>Description:{host.work_description}</p></li>
+          <li><h3>Time required per week:{host.time}</h3></li>
+          </ul>
+          {/* <p>Accomodation:{`${(host.accommodation)}`}</p> */}
      
-          {/* <p>{moment(host.created_at).startOf('minute').fromNow()}</p> */}
+          <p>{moment(host.created_at).startOf('minute').fromNow()}</p>
           <Link to={{
             pathname: `/hosts/${host.id}`,
             state: host,
           }} >
-            <button> Show </button>
+            <button className="host-show-btn"> Show </button>
           </Link>
           <div className="edit-delete-container">
             <Link to={`/hosts/${host.id}/edit`}>Edit</Link>
@@ -66,9 +68,9 @@ class Hosts extends React.Component {
 
   render() {
     // const countries = this.state?.countryData;
-    return <div>{this.renderHosts()},
+    return <div>{this.renderHosts()}
     {/* {this. getLocationData()} */}
-    
+
     </div>;
 
   }
