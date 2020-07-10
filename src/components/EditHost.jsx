@@ -27,10 +27,11 @@ class EditHost extends React.Component {
       accommodation,
       id
     } = this.state
-    await fetch(`http://localhost:3000/hosts/${id}`, {
+    await fetch(`${process.env.REACT_APP_BACKEND_URL}/host/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+         'Authorization': `Bearer ${localStorage.getItem('token')}`
       },
       body: JSON.stringify({
         name,
@@ -44,9 +45,12 @@ class EditHost extends React.Component {
     this.props.history.push("/hosts");
   };
 
+
+
+
   async componentDidMount() {
     const { id } = this.state;
-    const response = await fetch(`http://localhost:3000/hosts/${id}`);
+    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/host/${id}`);
     const {
       name,
       location,

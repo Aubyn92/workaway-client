@@ -9,7 +9,11 @@ class Host extends React.Component {
     // console.log(this.props)
     // console.log(this.props.location.state.location)
     const { id } = this.state;
-    const anotherResponse = await fetch(`http://localhost:3000/host/${id}`);
+    const anotherResponse = await fetch(`${process.env.REACT_APP_BACKEND_URL}/host/${id}`, {
+      headers: {
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+    });
     const host = await anotherResponse.json();
     const response = await fetch(
       `https://restcountries.eu/rest/v2/name/${this.props.location.state.location}`
@@ -17,6 +21,13 @@ class Host extends React.Component {
     const countries = await response.json();
     this.setState({ countries: countries, host: host});
   }
+
+
+
+
+
+
+
 
   // render() {
   //   console.log("here");
