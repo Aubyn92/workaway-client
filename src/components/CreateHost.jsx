@@ -28,6 +28,7 @@ class CreateHost extends React.Component {
     return (
       <div className="host">
       <div className="container">
+        <h1>Create a listing</h1>
         <form onSubmit={this.onFormSubmit}>
           <label htmlFor="name">Name</label>
           <input type="text" name="name" id="name" onChange={this.onInputChange}/>
