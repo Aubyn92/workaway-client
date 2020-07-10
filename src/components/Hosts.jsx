@@ -55,6 +55,12 @@ class Hosts extends React.Component {
             <button className="host-show-btn"> Show </button>
           </Link>
           <div className="edit-delete-container">
+            <Link to={{
+              pathname: `/hosts/${host.id}`,
+              state: host,
+             }} >
+              <button> Show </button>
+            </Link>
             <Link to={`/hosts/${host.id}/edit`}>Edit</Link>
             <span onClick={() => this.deleteHost(host.id)}>Delete</span>
           </div>
@@ -64,7 +70,9 @@ class Hosts extends React.Component {
     });
   };
 
-  
+  componentDidMount(){
+    this.getHosts();
+  }
 
   render() {
     // const countries = this.state?.countryData;
