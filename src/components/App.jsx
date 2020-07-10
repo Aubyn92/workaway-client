@@ -11,13 +11,16 @@ import ProtectedRoute from './ProtectedRoute';
 import Login from './Login';
 import SignUp from './SignUp';
 import Secrets from './Secrets';
+import { HostsContext, dispatch } from '../Context/HostsContext';
 
 
 class App extends React.Component {
+  state = { hosts: [], dispatch: dispatch.bind(this) }
 
   render() {
     return (
       <>
+      <HostsContext.Provider value={this.state}>
         <Navbar />
         <Switch>
           <Route exact path="/hosts" component={Hosts} />
@@ -30,6 +33,7 @@ class App extends React.Component {
           <Route exact path="/" component={Home} />
           <Route component={NoMatch} />
         </Switch>
+        </HostsContext.Provider>
       </>
     );
   }

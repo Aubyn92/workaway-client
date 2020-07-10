@@ -1,28 +1,37 @@
 import React from "react";
+import { HostsContext } from '../Context/HostsContext';
 
 class CreateHost extends React.Component {
+  static contextType = HostsContext
   onInputChange = (event) => {
+    const key = event.target.id;
     this.setState({
-      [event.target.id]: event.target.value,
+      [key]: event.target.value,
     });
   };
 
-  onCheckBoxChange = (event) => {
-    console.log(event.target.value);
-  }
+  // onCheckBoxChange = (event) => {
+  //   console.log(event.target.value);
+  // }
 
   onFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(this.state);
-    await fetch("http://localhost:3000/hosts", {
+    // console.log(this.state);
+    const body = {
+      host: this.state
+    }
+    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/hosts`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       },
-      body: JSON.stringify(this.state),
+      body: JSON.stringify(body),
     });
+    const host = await response.json()
+    this.context.dispatch("add", host)
     this.props.history.push("/hosts");
+    // this.props.history.push("/hosts");
   };
 
   render() {

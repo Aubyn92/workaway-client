@@ -1,31 +1,34 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import moment from 'moment'
+import { HostsContext } from '../Context/HostsContext';
 
 class Hosts extends React.Component {
-  state = { hosts: [] };
+  static contextType = HostsContext;
+  // state = { hosts: [] };
 
-  getHosts = async () => {
-    const response = await fetch("http://localhost:3000/hosts");
-    const hosts = await response.json();
-    console.log(hosts)
-    this.setState({ hosts: hosts });
-  };
+  // getHosts = async () => {
+  //   const response = await fetch("http://localhost:3000/hosts");
+  //   const hosts = await response.json();
+  //   console.log(hosts)
+  //   this.setState({ hosts: hosts });
+  // };
   
 
   deleteHost = async (id) => {
-    await fetch(`http://localhost:3000/hosts/${id}`, {
+    this.context.dispatch("remove", id);
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/hosts/${id}`, {
       method: "DELETE",
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       }
     });
-    this.getHosts();
+    // this.getHosts();
   };
 
-  componentDidMount = async () => {
-    await this.getHosts()
-  }
+  // componentDidMount = async () => {
+  //   await this.getHosts()
+  // }
 
   // getLocationData = async() =>{
   //   const response = await fetch(`https://restcountries.eu/rest/v2/capital/${location}`);
@@ -37,8 +40,8 @@ class Hosts extends React.Component {
   //   this.setState({host: host});
   // }
 
-  renderHosts = () => {
-    return this.state.hosts.map((host, index) => {
+  renderHosts = (hosts) => {
+    return hosts.map((host, index) => {
       return (
         <div key={index} className="hosts">
           <ul>
@@ -48,7 +51,6 @@ class Hosts extends React.Component {
           <li><h3>Description:</h3><p>{host.work_description}</p></li>
           <li><h3>Time required per week:{host.time}</h3></li>
           </ul>
-          {/* <p>Accomodation:{`${(host.accommodation)}`}</p> */}
      
           <p>{moment(host.created_at).startOf('minute').fromNow()}</p>
           <Link to={{
@@ -67,16 +69,15 @@ class Hosts extends React.Component {
     });
   };
 
-  componentDidMount(){
-    this.getHosts();
-  }
+  // componentDidMount(){
+  //   this.getHosts();
+  // }
 
   render() {
-    // const countries = this.state?.countryData;
-    return <div>{this.renderHosts()}
-    {/* {this. getLocationData()} */}
-
-    </div>;
+    const { hosts } = this.context
+      // const countries = this.state?.countryData;
+    return (<div>{this.renderHosts(hosts)}
+    </div>);
 
   }
 }

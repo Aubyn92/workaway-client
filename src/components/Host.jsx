@@ -1,4 +1,5 @@
-import React from "react";
+import React from "react"
+import { HostsContext } from '../Context/HostsContext';
 
 class Host extends React.Component {
   state = {
@@ -6,8 +7,6 @@ class Host extends React.Component {
   };
 
   async componentDidMount() {
-    // console.log(this.props)
-    // console.log(this.props.location.state.location)
     const { id } = this.state;
     const anotherResponse = await fetch(`${process.env.REACT_APP_BACKEND_URL}/hosts/${id}`, {
       headers: {

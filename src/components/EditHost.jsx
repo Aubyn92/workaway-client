@@ -1,6 +1,8 @@
 import React from "react";
+import { HostsContext } from "../Context/HostsContext";
 
 class EditHost extends React.Component {
+  static contextType = HostsContext;
   state = {
     name: "",
     location: "",
@@ -8,7 +10,7 @@ class EditHost extends React.Component {
     work_description: "",
     time: "",
     // accommodation: true,
-    id: this.props.match.params.id
+    id: Number(this.props.match.params.id)
   };
   onInputChange = (event) => {
     this.setState({
@@ -27,6 +29,16 @@ class EditHost extends React.Component {
       // accommodation,
       id
     } = this.state
+    this.context.dispatch("update",{
+        name,
+        location,
+        work_category,
+        work_description,
+        time,
+        updated_at: new Date()
+    });
+    this.props.history.push("/hosts");
+
     await fetch(`${process.env.REACT_APP_BACKEND_URL}/hosts/${id}`, {
       method: "PUT",
       headers: {
@@ -42,33 +54,36 @@ class EditHost extends React.Component {
         // accommodation
       }),
     });
-    this.props.history.push("/hosts");
   };
 
 
 
 
   async componentDidMount() {
-    const { id } = this.state;
-    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/hosts/${id}`);
-    const {
-      name,
-      location,
-      work_category,
-      work_description,
-      time,
-      // accommodation,
-      loading
-    } = await response.json();
-    this.setState({
-      name,
-      location,
-      work_category,
-      work_description,
-      time,
-      // accommodation,
-      loading
-    });
+    const foundHost = this.context.hosts.find(
+      (host)=> host.id === this.state.id
+    );
+    this.setState({ ...foundHost, loading: false });
+    // const { id } = this.state;
+    // const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/hosts/${id}`);
+    // const {
+    //   name,
+    //   location,
+    //   work_category,
+    //   work_description,
+    //   time,
+    //   // accommodation,
+    //   loading
+    // } = await response.json();
+    // this.setState({
+    //   name,
+    //   location,
+    //   work_category,
+    //   work_description,
+    //   time,
+    //   // accommodation,
+    //   loading
+    // });
   }
 
   render() {
